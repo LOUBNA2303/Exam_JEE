@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<title>Affihcer</title>
+<h:head>
+    <h:outputStylesheet library="webjars" name="bootstrap/5.3.2/css/bootstrap.css"/>
+    <h2>Bienvenu</h2>
+</h:head>
+<h:body>
+
+    <h:form>
+
+        <h:dataTable id="table" var="empl" value="#{bean.employes}" border="1" styleClass="table table-success table-striped-columns" ><!--class="table table-striped " rowClasses="odd-row, even-row"-->
+
+            <h:inputHidden id="userI" value="#{empl.id}" />
+            <h:column><f:facet name="header">
+                <h:outputText value="Id" /></f:facet>
+                <h:outputText value="#{empl.id}" />
+            </h:column>
+            <h:column><f:facet name="header"><h:outputText value="Name" /></f:facet>
+                <h:outputText value="#{empl.name}" />
+            </h:column>
+
+            <h:column><f:facet name="header"><h:outputText value="Skill" /></f:facet>
+                <ui:repeat value="#{empl}" var="emplo">
+                    <p>Note ID: #{emplo.id}</p>
+                    <p>Contenu: #{emplo.skill}</p>
+                </ui:repeat>
+            </h:column>
+             <h:column><f:facet name="header"><h:outputText value="Project" /></f:facet>
+                <ui:repeat value="#{empl.affectation}" var="affect">
+                    <p>Note ID: #{affect.id}</p>
+                    <p>Contenu: #{affect.taux}</p>
+                </ui:repeat>
+            </h:column>
+            <h:column><f:facet name="header"><h:outputText value="Name" /></f:facet>
+                <h:commandButton value="Remove" action="#{bean.beanDeleteStudent(empl.id) }" />
+            </h:column>
+
+
+
+
+
+
+
+        </h:dataTable>
+
+
+
+
+    </h:form>
+</h:body>
+
+
+</html>
+
+
